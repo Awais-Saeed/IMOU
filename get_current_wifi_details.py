@@ -153,10 +153,9 @@ pprint.pprint(response.json())
 # Process response
 if response.status_code == 200:
     data = response.json()
-    if data["result"]["code"] == "0":  # code is Request return code. 0 means successfull operation
-        print("✅ WiFi Details:")
+    if data["result"]["code"] == "0":  # code is Request return code. 0 means successful operation
         wifi_intensity = data["result"]["data"]["intensity"]
-        print(f"- WiFi intensity: {wifi_intensity}/5 ")
+        print(f"✅ WiFi intensity: {wifi_intensity}/5 ")
     else:
         print("❌ Error:", data["result"]["msg"])
 else:
