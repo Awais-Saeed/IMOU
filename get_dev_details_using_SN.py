@@ -172,14 +172,12 @@ pprint.pprint(response.json())
 # Process response
 if response.status_code == 200:
     data = response.json()
-    if data["result"]["code"] == "0":  # code is Request return code. 0 means successfull operation
-        print("✅ Device Details:")
-
+    if data["result"]["code"] == "0":  # code is Request return code. 0 means successful operation
         for device in data["result"]["data"]["deviceList"]:
             dev_name = device['deviceName']
             dev_status = device['deviceStatus']
             last_offline_time = time_converter(device["channelList"][0]['lastOffLineTime'])
-            print(f"- Device ID: {device['deviceId']}, Name: {dev_name}, Status: {dev_status}, OFL time: {last_offline_time} ")
+            print(f"✅ Device ID: {device['deviceId']}, Name: {dev_name}, Status: {dev_status}, OFL time: {last_offline_time} ")
     else:
         print("❌ Error:", data["result"]["msg"])
 else:
