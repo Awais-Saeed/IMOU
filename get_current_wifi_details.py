@@ -1,3 +1,5 @@
+# WiFi details are for one device at a time
+
 import requests
 import json
 import uuid
