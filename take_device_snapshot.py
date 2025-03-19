@@ -156,26 +156,9 @@ pprint.pprint(response.json())
 # Process response
 if response.status_code == 200:
     data = response.json()
-    if data["result"]["code"] == "0":  # code is Request return code. 0 means successfull operation
+    if data["result"]["code"] == "0":  # code is Request return code. 0 means successful operation
         img_url = data["result"]["data"]["url"]
         print(f"✅ Snapshot URL: {img_url}")
-
-        # save image
-        # Send a request to the URL
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
-        }
-        response = requests.get(img_url, headers=headers)
-
-        # Check if the request was successful
-        if response.status_code == 200:
-            with open("downloaded_image.jpg", "wb") as file:
-                file.write(response.content)
-            print("Image downloaded successfully!")
-        else:
-            print("Failed to download image. Status code:", response.status_code)
-
-
     else:
         print("❌ Error:", data["result"]["msg"])
 else:
